@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+
+  mvc-web:
+    build: ./mvc-web
+    container_name: mvc-web
+    ports:
+      - "8088:8088"
+    depends_on:
+      - calificaciones
+      - libros
+      - calculo
+    networks:
+      - red-app
+
+  calificaciones:
+    build: ./servicio-calificaciones
+    container_name: servicio-calificaciones
+    ports:
+      - "8081:8081"
+    volumes:
+      - h2data:/data
+    networks:
+      - red-app
+
+  libros:
+    build: ./servicio-libros
+    container_name: servicio-libros
+    ports:
+      - "8082:8082"
+    volumes:
+      - librosdata:/data
+    networks:
+      - red-app
+
+  calculo:
+    build: ./servicio-calculo
+    container_name: servicio-calculo
+    ports:
+      - "8083:8083"
+    networks:
+      - red-app
+
+volumes:
+  h2data:
+  librosdata:
+
+networks:
+  red-app:
