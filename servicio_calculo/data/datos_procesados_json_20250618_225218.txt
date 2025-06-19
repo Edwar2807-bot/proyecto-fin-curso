@@ -1,5 +1,0 @@
-=== PROCESAMIENTO JSON ===
-Timestamp: 2025-06-18T22:52:18.906896300
-Contenido:
-{"tipo":"JSON","datos_originales":"Datos de ejemplo para procesar","datos_procesados":"DATOS DE EJEMPLO PARA PROCESAR","longitud":30,"timestamp":"2025-06-18T22:52:18.8973822"}
-=== FIN ===

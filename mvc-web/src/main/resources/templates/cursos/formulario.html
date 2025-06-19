@@ -7,7 +7,7 @@
 <body>
 <div class="container mt-4">
     <h2 th:text="${curso.id != null} ? 'Editar Curso' : 'Nuevo Curso'"></h2>
-    <form th:action="@{/cursos/guardar}" th:object="${curso}" method="post">
+    <form th:action="@{/cursos}" th:object="${curso}" method="post">
         <input type="hidden" th:field="*{id}"/>
         <div class="mb-3">
             <label class="form-label">Nombre</label>
@@ -22,6 +22,7 @@
         </div>
         <button type="submit" class="btn btn-success">Guardar</button>
         <a href="/cursos" class="btn btn-secondary">Cancelar</a>
+        <a href="/" class="btn btn-secondary">Volver al inicio</a>
     </form>
 </div>
 </body>

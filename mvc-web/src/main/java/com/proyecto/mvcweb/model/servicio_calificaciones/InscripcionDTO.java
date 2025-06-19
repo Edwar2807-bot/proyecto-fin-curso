@@ -9,6 +9,24 @@ public class InscripcionDTO {
     private String nombreEstudiante;
     private String nombreCurso;
     private String tipoNotaCurso;
+    private EstudianteDTO estudiantes;
+    private CursoDTO cursos;
+
+    public EstudianteDTO getEstudiantes() {
+        return estudiantes;
+    }
+
+    public void setEstudiantes(EstudianteDTO estudiantes) {
+        this.estudiantes = estudiantes;
+    }
+
+    public CursoDTO getCursos() {
+        return cursos;
+    }
+
+    public void setCursos(CursoDTO cursos) {
+        this.cursos = cursos;
+    }
 
     public String getNombreEstudiante() {
         return nombreEstudiante;

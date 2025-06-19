@@ -12,4 +12,10 @@ public class InicioController {
         model.addAttribute("mensaje", "¡Bienvenido al sistema!");
         return "index"; // Busca templates/index.html
     }
+
+    @GetMapping("/calificaciones")
+    public String inicioCalificaciones() {
+        return "index_calificaciones"; // sin .html
+    }
+
 }

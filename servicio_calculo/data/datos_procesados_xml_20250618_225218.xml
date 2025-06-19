@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<procesamiento>
-  <tipo>XML</tipo>
-  <timestamp>2025-06-18T22:52:18.9096412</timestamp>
-  <datos_originales><![CDATA[Datos de ejemplo para procesar]]></datos_originales>
-  <datos_procesados><![CDATA[datos_de_ejemplo_para_procesar]]></datos_procesados>
-  <longitud>30</longitud>
-  <caracteres_especiales>0</caracteres_especiales>
-</procesamiento>

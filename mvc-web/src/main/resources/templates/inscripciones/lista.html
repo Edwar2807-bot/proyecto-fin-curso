@@ -22,8 +22,8 @@
         </thead>
         <tbody>
         <tr th:each="inscripcion : ${inscripciones}">
-            <td th:text="${inscripcion.estudiante.nombreCompleto}">Nombre</td>
-            <td th:text="${inscripcion.curso.nombre}">Curso</td>
+            <td th:text="${inscripcion.estudianteId}">Nombre</td>
+            <td th:text="${inscripcion.cursoId}">Curso</td>
             <td th:text="${inscripcion.notaCuantitativa}">Nota</td>
             <td th:text="${inscripcion.notaCualitativa}">Nota</td>
             <td>

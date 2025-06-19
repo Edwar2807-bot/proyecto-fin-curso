@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class EstudianteService {
 
-    private final String BASE_URL = "http://servicio-calificaciones:8081/api/estudiantes";
+    private final String BASE_URL = "http://servicio-calificaciones:8080/api/estudiantes";
 
     @Autowired
     private RestTemplate restTemplate;

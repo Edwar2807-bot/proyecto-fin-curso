@@ -10,7 +10,7 @@ import org.springframework.http.*;
 public class ReporteService {
 
     private final RestTemplate restTemplate;
-    private final String baseUrl = "http://servicio-calificaciones:8081/api/reportes";
+    private final String baseUrl = "http://servicio-calificaciones:8080/api/reportes";
 
     public ReporteService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;

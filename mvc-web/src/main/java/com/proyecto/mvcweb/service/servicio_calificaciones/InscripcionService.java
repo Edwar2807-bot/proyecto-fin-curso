@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class InscripcionService {
 
-    private final String BASE_URL = "http://servicio-calificaciones:8081/api/inscripciones";
+    private final String BASE_URL = "http://servicio-calificaciones:8080/api/inscripciones";
 
     @Autowired
     private RestTemplate restTemplate;

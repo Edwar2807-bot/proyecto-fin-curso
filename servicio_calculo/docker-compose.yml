@@ -1,9 +1,0 @@
-version: '3.8'
-services:
-  servicio-calculo:
-    build: .
-    ports:
-      - "8082:8082"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    container_name: servicio-calculo-container 

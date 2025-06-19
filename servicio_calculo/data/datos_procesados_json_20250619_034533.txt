@@ -1,5 +1,0 @@
-=== PROCESAMIENTO JSON ===
-Timestamp: 2025-06-19T03:45:33.988652524
-Contenido:
-{"tipo":"JSON","datos_originales":"Hola mundo desde JSON","datos_procesados":"HOLA MUNDO DESDE JSON","longitud":21,"timestamp":"2025-06-19T03:45:33.986167572"}
-=== FIN ===

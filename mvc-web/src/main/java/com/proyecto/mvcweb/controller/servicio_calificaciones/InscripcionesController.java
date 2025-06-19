@@ -22,6 +22,12 @@ public class InscripcionesController {
         this.service = service;
     }
 
+    @GetMapping
+    public String listar(Model model) {
+        model.addAttribute("inscripciones", service.obtenerInscripcionesPorCurso(null));
+        return "inscripciones/lista";
+    }
+
     @GetMapping("/curso/{cursoId}")
     public String listarPorCurso(@PathVariable Long cursoId, Model model) {
         List<InscripcionDTO> inscripciones = service.obtenerInscripcionesPorCurso(cursoId);
