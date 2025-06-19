@@ -23,4 +23,10 @@ public class InicioController {
         return "index_calculos";
     }
 
+    @GetMapping("/book")
+    public String  inicioLibros(){
+        return "index_libros";
+    }
+
+
 }
