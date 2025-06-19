@@ -13,7 +13,9 @@
     <table class="table table-bordered table-striped">
         <thead class="table-dark">
         <tr>
+            <th>IdEstudiante</th>
             <th>Estudiante</th>
+            <th>IDCurso</th>
             <th>Curso</th>
             <th>Nota Cuantitativa</th>
             <th>Nota Cualitativa</th>
@@ -23,7 +25,9 @@
         <tbody>
         <tr th:each="inscripcion : ${inscripciones}">
             <td th:text="${inscripcion.estudianteId}">Nombre</td>
+            <td th:text="${inscripcion.nombreEstudiante}">Nombre</td>
             <td th:text="${inscripcion.cursoId}">Curso</td>
+            <td th:text="${inscripcion.nombreCurso}">Curso</td>
             <td th:text="${inscripcion.notaCuantitativa}">Nota</td>
             <td th:text="${inscripcion.notaCualitativa}">Nota</td>
             <td>
@@ -33,7 +37,8 @@
         </tbody>
     </table>
     <a href="/inscripciones/nueva" class="btn btn-primary">Nueva Inscripción</a>
-    <a href="/" class="btn btn-secondary">Volver al inicio</a>
+    <a href="/" class="btn btn-secondary">Home</a>
+    <a href="/calificaciones" class="btn btn-secondary">Menú calificaciones</a>
 </div>
 </body>
 </html>
