@@ -18,7 +18,7 @@
             color: white;
             text-align: center;
             padding: 1rem;
-            height: 30px; /* <-- altura ajustada */
+            height: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -33,32 +33,40 @@
 
     <div class="row g-4">
 
-        <div class="col-md-4">
-            <div class="card text-white bg-primary shadow">
+        <!-- Gestión de Libros -->
+        <div class="col-md-6">
+            <div class="card bg-light shadow">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Gestión de Calificaciones</h5>
-                    <p class="card-text">Accede al sistema de calificaciones</p>
-                    <a href="http://localhost:8081" class="btn btn-light">Ir al servicio</a>
+                    <h5 class="card-title text-primary">Gestión de Libros</h5>
+                    <p class="card-text">Consulta los diferentes reportes disponibles del sistema de préstamo de libros.</p>
+                    <div class="d-grid gap-2">
+                        <a href="/libros" class="btn btn-outline-primary">Ver Libros</a>
+                        <a href="/usuarios" class="btn btn-outline-primary">Ver Usuarios</a>
+                        <a href="/prestados" class="btn btn-outline-primary">Ver Libros Prestados</a>
+                        <a href="/multas" class="btn btn-outline-primary">Ver Multas</a>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-4">
-            <div class="card text-white bg-success shadow">
+        <!-- Gestión de Calificaciones -->
+        <div class="col-md-6">
+            <div class="card bg-light shadow">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Gestión de Libros</h5>
-                    <p class="card-text">Consulta y registra libros</p>
-                    <a href="http://localhost:8082" class="btn btn-light">Ir al servicio</a>
+                    <h5 class="card-title text-success">Gestión de Calificaciones</h5>
+                    <p class="card-text">Accede al sistema de notas por microservicio.</p>
+                    <a href="http://localhost:8081" class="btn btn-outline-success">Ir al Servicio</a>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-4">
-            <div class="card text-dark bg-warning shadow">
+        <!-- Cálculo Científico -->
+        <div class="col-md-6">
+            <div class="card bg-light shadow">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Cálculo Científico</h5>
-                    <p class="card-text">Realiza cálculos matemáticos</p>
-                    <a href="http://localhost:8083" class="btn btn-dark">Ir al servicio</a>
+                    <h5 class="card-title text-warning">Cálculo Científico</h5>
+                    <p class="card-text">Ejecuta algoritmos científicos paralelizados.</p>
+                    <a href="http://localhost:8083" class="btn btn-outline-warning">Ir al Servicio</a>
                 </div>
             </div>
         </div>
