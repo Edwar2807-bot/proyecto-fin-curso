@@ -1,39 +1,52 @@
 package com.proyecto.mvcweb.controller.servicio_calificaciones;
 
-
-import com.proyecto.mvcweb.service.servicio_calificaciones.InscripcionService;
 import com.proyecto.mvcweb.service.servicio_calificaciones.ReporteService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.InputStreamResource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/reportes")
 public class ReportesController {
 
-    private final ReporteService service;
+    private final ReporteService reporteService;
 
-    public ReportesController(ReporteService service) {
-        this.service = service;
+    public ReportesController(ReporteService reporteService) {
+        this.reporteService = reporteService;
     }
+
+    @GetMapping
+    public String inicio() {
+        return "reportes/index";
+    }
+
     @GetMapping("/cursos/csv")
-    public ResponseEntity<InputStreamResource> exportarCursosCSV() {
-        return (ResponseEntity<InputStreamResource>) service.descargarReporteCursos();
+    public void descargarCursosCsv(HttpServletResponse response) {
+        procesarDescarga(reporteService.descargarCursosCsv(), "reporte_cursos.csv", response);
     }
 
     @GetMapping("/estudiantes/csv")
-    public ResponseEntity<InputStreamResource> exportarEstudiantesCSV() {
-        return (ResponseEntity<InputStreamResource>) service.descargarReporteEstudiantes();
+    public void descargarEstudiantesCsv(HttpServletResponse response) {
+        procesarDescarga(reporteService.descargarEstudiantesCsv(), "reporte_estudiantes.csv", response);
     }
 
-    @GetMapping("/cursos/{cursoId}/notas/csv")
-    public ResponseEntity<InputStreamResource> exportarNotasCursoCSV(@PathVariable Long cursoId) {
-        return (ResponseEntity<InputStreamResource>) service.descargarReporteNotasPorCurso(cursoId);
+    @GetMapping("/cursos/notas")
+    public void descargarNotasPorCurso(@RequestParam Long cursoId, HttpServletResponse response) {
+        procesarDescarga(reporteService.descargarNotasPorCurso(cursoId), "reporte_notas_curso_" + cursoId + ".csv", response);
+    }
+
+
+    private void procesarDescarga(ResponseEntity<byte[]> respuesta, String nombreArchivo, HttpServletResponse response) {
+        try {
+            response.setContentType("text/csv");
+            response.setHeader("Content-Disposition", "attachment; filename=" + nombreArchivo);
+            response.getOutputStream().write(respuesta.getBody());
+            response.getOutputStream().flush();
+        } catch (Exception e) {
+            throw new RuntimeException("Error al descargar archivo CSV", e);
+        }
     }
 }
+
+

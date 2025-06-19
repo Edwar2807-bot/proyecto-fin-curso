@@ -1,25 +1,43 @@
-<!-- templates/reportes/index.html -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Reportes CSV</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
+
+<div class="d-flex justify-content-start align-items-center p-3 border-bottom mb-4 bg-light shadow-sm gap-2">
+    <a href="/" class="btn btn-outline-primary btn-sm d-flex align-items-center">
+        <i class="bi bi-house-door-fill me-1"></i> 🏠 Home
+    </a>
+
+    <a href="/calificaciones" class="btn btn-outline-primary btn-sm d-flex align-items-center">
+        <i class="bi bi-journal-text me-1"></i> 📚 Menú Calificaciones
+    </a>
+</div>
+
+
 <div class="container mt-5">
-    <h2 class="mb-4 text-center">Exportación de Reportes CSV</h2>
-    <div class="d-grid gap-2 col-6 mx-auto">
-        <a href="/reportes/cursos" class="btn btn-outline-primary">Exportar Cursos CSV</a>
-        <a href="/reportes/estudiantes" class="btn btn-outline-success">Exportar Estudiantes CSV</a>
-        <form th:action="@{/reportes/cursos/notas}" method="get" class="input-group">
-            <input type="number" name="cursoId" class="form-control" placeholder="ID del curso" required />
-            <button type="submit" class="btn btn-outline-warning">Exportar Notas del Curso</button>
-        </form>
+    <h2 class="mb-4">Exportación de Reportes</h2>
+
+    <div class="mb-3">
+        <a class="btn btn-primary" href="/reportes/cursos/csv">📘 Descargar Reporte de Cursos</a>
     </div>
-    <div class="mt-4">
-        <a href="/" class="btn btn-secondary">Volver al inicio</a>
+    <div class="mb-3">
+        <a class="btn btn-primary" href="/reportes/estudiantes/csv">👨‍🎓 Descargar Reporte de Estudiantes</a>
     </div>
+
+    <form th:action="@{/reportes/cursos/notas}" method="get" class="row g-3">
+        <div class="col-auto">
+            <input type="number" name="cursoId" class="form-control" placeholder="ID del Curso" required>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">📄 Descargar Notas por Curso</button>
+        </div>
+    </form>
+    <br>
+
 </div>
 </body>
 </html>
