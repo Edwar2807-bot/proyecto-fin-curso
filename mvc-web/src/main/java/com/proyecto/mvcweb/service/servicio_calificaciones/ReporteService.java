@@ -1,51 +1,29 @@
 package com.proyecto.mvcweb.service.servicio_calificaciones;
 
-import org.springframework.core.io.Resource;
+
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.core.io.ByteArrayResource;
-import org.springframework.http.*;
 
 @Service
 public class ReporteService {
 
     private final RestTemplate restTemplate;
-    private final String baseUrl = "http://servicio-calificaciones:8080/api/reportes";
+    private final String BASE_URL = "http://servicio-calificaciones:8080/api/reportes";
 
     public ReporteService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
-    public Resource descargarReporteCursos() {
-        return descargarArchivoCSV(baseUrl + "/cursos/csv");
+    public ResponseEntity<byte[]> descargarCursosCsv() {
+        return restTemplate.exchange(BASE_URL + "/cursos/csv", HttpMethod.GET, null, byte[].class);
     }
 
-    public Resource descargarReporteEstudiantes() {
-        return descargarArchivoCSV(baseUrl + "/estudiantes/csv");
+    public ResponseEntity<byte[]> descargarEstudiantesCsv() {
+        return restTemplate.exchange(BASE_URL + "/estudiantes/csv", HttpMethod.GET, null, byte[].class);
     }
 
-    public Resource descargarReporteNotasPorCurso(Long cursoId) {
-        return descargarArchivoCSV(baseUrl + "/cursos/" + cursoId + "/notas/csv");
-    }
-
-    private Resource descargarArchivoCSV(String url) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setAccept(MediaType.parseMediaTypes("text/csv"));
-
-        HttpEntity<Void> entity = new HttpEntity<>(headers);
-
-        ResponseEntity<byte[]> response = restTemplate.exchange(
-                url,
-                HttpMethod.GET,
-                entity,
-                byte[].class
-        );
-
-        if (response.getStatusCode().is2xxSuccessful() && response.getBody() != null) {
-            return new ByteArrayResource(response.getBody());
-        }
-
-        return null;
+    public ResponseEntity<byte[]> descargarNotasPorCurso(Long cursoId) {
+        return restTemplate.exchange(BASE_URL + "/cursos/" + cursoId + "/notas/csv", HttpMethod.GET, null, byte[].class);
     }
 }
-
