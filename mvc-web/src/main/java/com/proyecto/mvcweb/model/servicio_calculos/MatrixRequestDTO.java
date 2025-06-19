@@ -1,6 +1,6 @@
 package com.proyecto.mvcweb.model.servicio_calculos;
 
-public class MatrixRequest {
+public class MatrixRequestDTO {
     private double[][] matrixA;
     private double[][] matrixB;
 

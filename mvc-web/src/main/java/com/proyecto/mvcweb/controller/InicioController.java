@@ -10,12 +10,17 @@ public class InicioController {
     @GetMapping("/")
     public String inicio(Model model) {
         model.addAttribute("mensaje", "¡Bienvenido al sistema!");
-        return "index"; // Busca templates/index.html
+        return "index"; // Busca templates/index_calculos.html
     }
 
     @GetMapping("/calificaciones")
     public String inicioCalificaciones() {
         return "index_calificaciones"; // sin .html
+    }
+
+    @GetMapping("/calculos")
+    public String  inicioCalculos(){
+        return "index_calculos";
     }
 
 }

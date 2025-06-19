@@ -1,6 +1,7 @@
     package com.proyecto.mvcweb.model.servicio_calculos;
 
-    public class IntegrationRequest {
+
+    public class IntegrationRequestDTO {
         private String function;
         private double start;
         private double end;
@@ -37,4 +38,7 @@
         public void setIntervals(int intervals) {
             this.intervals = intervals;
         }
+
+        // Getters y setters
     }
+
