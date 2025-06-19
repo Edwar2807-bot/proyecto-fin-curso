@@ -1,0 +1,59 @@
+{
+  "ejemplos_requests": {
+    "1_status": {
+      "method": "GET",
+      "url": "http://localhost:8082/api/calculo/status",
+      "description": "Verificar estado del servicio"
+    },
+    "2_procesar_json": {
+      "method": "POST",
+      "url": "http://localhost:8082/api/calculo/procesar/json",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "datos": "Este es un texto que sera procesado como JSON"
+      },
+      "description": "Procesa texto y lo convierte a formato JSON con metadata"
+    },
+    "3_procesar_base64": {
+      "method": "POST", 
+      "url": "http://localhost:8082/api/calculo/procesar/base64",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "datos": "Texto para codificar en Base64"
+      },
+      "description": "Codifica el texto en Base64"
+    },
+    "4_procesar_xml": {
+      "method": "POST",
+      "url": "http://localhost:8082/api/calculo/procesar/xml", 
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "datos": "Datos para XML con caracteres especiales! @#$"
+      },
+      "description": "Convierte datos a formato XML estructurado"
+    },
+    "5_decodificar_base64": {
+      "method": "POST",
+      "url": "http://localhost:8082/api/calculo/procesar/base64/decodificar",
+      "headers": {
+        "Content-Type": "application/json"  
+      },
+      "body": {
+        "datos": "SGVsbG8gV29ybGQ="
+      },
+      "description": "Decodifica 'SGVsbG8gV29ybGQ=' que es 'Hello World' en Base64"
+    }
+  },
+  "como_usar": [
+    "1. Ejecutar: docker run -p 8082:8082 servicio-calculo",
+    "2. Usar Postman, Insomnia o curl con los ejemplos de arriba",
+    "3. Verificar respuestas JSON estructuradas",
+    "4. Revisar directorio /data para archivos generados"
+  ]
+} 

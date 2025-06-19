@@ -1,0 +1,7 @@
+=== PROCESAMIENTO BASE64 ===
+Datos originales: Datos de ejemplo para procesar
+Datos codificados: RGF0b3MgZGUgZWplbXBsbyBwYXJhIHByb2Nlc2Fy
+Longitud original: 30
+Longitud codificada: 40
+Timestamp: 2025-06-18T22:52:18.9074045
+=== FIN ===

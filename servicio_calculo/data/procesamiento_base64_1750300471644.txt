@@ -1,0 +1,7 @@
+=== PROCESAMIENTO BASE64 ===
+Timestamp: 2025-06-18T21:34:31.645871100
+Datos originales: Hola Mundo - Taller UML
+Datos codificados: SG9sYSBNdW5kbyAtIFRhbGxlciBVTUw=
+Longitud original: 23
+Longitud codificada: 32
+Decodificación (prueba): Hola Mundo - Taller UML

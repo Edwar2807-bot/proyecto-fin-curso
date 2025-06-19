@@ -1,0 +1,11 @@
+=== PROCESAMIENTO JSON ===
+Timestamp: 2025-06-18T21:34:31.641869700
+Datos originales: Hola Mundo - Taller UML
+Resultado:
+{
+  "tipo": "JSON",
+  "datos_originales": "Hola Mundo - Taller UML",
+  "datos_procesados": "HOLA MUNDO - TALLER UML",
+  "longitud": 23,
+  "timestamp": "2025-06-18T21:34:31.624342600"
+}
