@@ -1,0 +1,6 @@
+[
+  { "id": 1, "nombre": "Rey Ruiz", "rol": "ESTUDIANTE" },
+  { "id": 2, "nombre": "Carlos Torres", "rol": "DOCENTE" },
+  { "id": 3, "nombre": "Luis Pérez", "rol": "EMPLEADO" },
+  { "id": 4, "nombre": "Omar Gonzalez", "rol": "EMPLEADO" }
+]

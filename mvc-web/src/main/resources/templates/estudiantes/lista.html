@@ -5,9 +5,20 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
+<div class="d-flex justify-content-start align-items-center p-3 border-bottom mb-4 bg-light shadow-sm gap-2">
+    <a href="/" class="btn btn-outline-primary btn-sm d-flex align-items-center">
+        <i class="bi bi-house-door-fill me-1"></i> 🏠 Home
+    </a>
+
+    <a href="/calificaciones" class="btn btn-outline-primary btn-sm d-flex align-items-center">
+        <i class="bi bi-journal-text me-1"></i> 📚 Menú Calificaciones
+    </a>
+</div>
+
 <div class="container mt-4">
+
     <h2>Estudiantes</h2>
-    <a class="btn btn-primary mb-3" href="/estudiantes/nuevo">Nuevo Estudiante</a>
+
     <table class="table table-bordered">
         <thead>
         <tr>
@@ -28,9 +39,8 @@
             </td>
         </tr>
         </tbody>
+        <a class="btn btn-primary mb-3" href="/estudiantes/nuevo">Nuevo Estudiante</a>
     </table><br>
-    <a href="/" class="btn btn-secondary">Home</a>
-    <a href="/calificaciones" class="btn btn-secondary">Menú calificaciones</a>
 </div>
 </body>
 </html>

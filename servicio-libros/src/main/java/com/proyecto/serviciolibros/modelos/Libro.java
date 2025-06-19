@@ -5,6 +5,9 @@ public class Libro {
     private String titulo;
     private String autor;
 
+    public Libro() {
+    }
+
     public Libro(Long id, String titulo, String autor) {
         this.id = id;
         this.titulo = titulo;

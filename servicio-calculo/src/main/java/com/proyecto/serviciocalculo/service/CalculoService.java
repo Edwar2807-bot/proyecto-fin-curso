@@ -54,6 +54,8 @@ public class CalculoService {
         return new CalculationResponse(result, endTime - startTime, N_THREADS, "Multiplicación completada exitosamente.");
     }
 
+
+    //Integración por trapecio
     public CalculationResponse integrate(String function, double start, double end, int intervals) {
         long startTime = System.currentTimeMillis();
 

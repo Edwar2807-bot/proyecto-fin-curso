@@ -1,15 +1,24 @@
 package com.proyecto.serviciolibros;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.proyecto.serviciolibros.modelos.Libro;
 import com.proyecto.serviciolibros.modelos.Prestamo;
+import com.proyecto.serviciolibros.modelos.PrestamoDTO;
 import com.proyecto.serviciolibros.modelos.Rol;
 import com.proyecto.serviciolibros.modelos.Usuario;
 import com.proyecto.serviciolibros.repositorios.DataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
+import java.io.InputStream;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Component
 public class Biblioteca implements CommandLineRunner {
@@ -19,54 +28,40 @@ public class Biblioteca implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
 
-        // Empleados
-        Usuario estudiante = new Usuario(1L, "Rey Ruiz", Rol.ESTUDIANTE);
-        Usuario docente = new Usuario(2L, "Carlos Torres", Rol.DOCENTE);
-        Usuario empleado = new Usuario(3L, "Luis Pérez", Rol.EMPLEADO);
-        Usuario empleado2 = new Usuario(4L, "Omar Gonzalez", Rol.EMPLEADO);
-        repository.getUsuarios().add(estudiante);
-        repository.getUsuarios().add(docente);
-        repository.getUsuarios().add(empleado);
-        repository.getUsuarios().add(empleado2);
+        // Usuarios
+        TypeReference<List<Usuario>> typeReferenceUsuarios = new TypeReference<>() {};
+        InputStream inputStreamUsuarios = new ClassPathResource("data/usuarios.json").getInputStream();
+        List<Usuario> usuarios = mapper.readValue(inputStreamUsuarios, typeReferenceUsuarios);
+        repository.getUsuarios().addAll(usuarios);
 
         // Libros
-        Libro libro1 = new Libro(101L, "100 años de soledad", "Gabriel Garcia Marquez");
-        Libro libro2 = new Libro(102L, "Don Quijote de la Mancha", "Miguel de Cervantes Saavedra");
-        Libro libro3 = new Libro(103L, "Clean Code", "Robert C. Martin");
-        Libro libro4 = new Libro(104L, "El principito", "Antoine de Saint-Exupéry");
+        TypeReference<List<Libro>> typeReferenceLibros = new TypeReference<>() {};
+        InputStream inputStreamLibros = new ClassPathResource("data/libros.json").getInputStream();
+        List<Libro> libros = mapper.readValue(inputStreamLibros, typeReferenceLibros);
+        repository.getLibros().addAll(libros);
 
-        repository.getLibros().add(libro1);
-        repository.getLibros().add(libro2);
-        repository.getLibros().add(libro3);
-        repository.getLibros().add(libro4);
+        // Préstamos
+        TypeReference<List<PrestamoDTO>> typeReferencePrestamos = new TypeReference<>() {};
+        InputStream inputStreamPrestamos = new ClassPathResource("data/prestamos.json").getInputStream();
+        List<PrestamoDTO> prestamosDTO = mapper.readValue(inputStreamPrestamos, typeReferencePrestamos);
 
-        // Préstamo 1: Entregado con retraso (genera multa) - Estudiante
-        repository.getPrestamos().add(new Prestamo(1L, estudiante, libro1,
-                LocalDate.now().minusDays(20),
-                LocalDate.now().minusDays(10),
-                LocalDate.now().minusDays(5)
-        ));
+        Map<Long, Usuario> mapaUsuarios = usuarios.stream().collect(Collectors.toMap(Usuario::getId, Function.identity()));
+        Map<Long, Libro> mapaLibros = libros.stream().collect(Collectors.toMap(Libro::getId, Function.identity()));
 
-        // Préstamo 2: Entregado a tiempo (no genera multa)
-        repository.getPrestamos().add(new Prestamo(2L, docente, libro2,
-                LocalDate.now().minusDays(15),
-                LocalDate.now().minusDays(1),
-                LocalDate.now().minusDays(2)
-        ));
+        for (PrestamoDTO dto : prestamosDTO) {
+            Usuario usuario = mapaUsuarios.get(dto.usuarioId);
+            Libro libro = mapaLibros.get(dto.libroId);
 
-        // Préstamo 3: Aún no devuelto (considerado "libro prestado")
-        repository.getPrestamos().add(new Prestamo(3L, empleado, libro3,
-                LocalDate.now().minusDays(5),
-                LocalDate.now().plusDays(10),
-                null
-        ));
+            if (usuario != null && libro != null) {
+                LocalDate fechaPrestamo = LocalDate.now().minusDays(dto.diasDesdePrestamo);
+                LocalDate fechaDevolucionEstimada = fechaPrestamo.plusDays(dto.diasParaDevolucion);
+                LocalDate fechaDevolucionReal = (dto.diasDesdeDevolucion != null) ? LocalDate.now().minusDays(dto.diasDesdeDevolucion) : null;
 
-        // Préstamo 4: Entregado con retraso (genera multa) - Empleado
-        repository.getPrestamos().add(new Prestamo(4L, empleado2, libro4,
-                LocalDate.now().minusDays(20),
-                LocalDate.now().minusDays(12),
-                LocalDate.now().minusDays(5)
-        ));
+                Prestamo prestamo = new Prestamo(dto.id, usuario, libro, fechaPrestamo, fechaDevolucionEstimada, fechaDevolucionReal);
+                repository.getPrestamos().add(prestamo);
+            }
+        }
     }
 }

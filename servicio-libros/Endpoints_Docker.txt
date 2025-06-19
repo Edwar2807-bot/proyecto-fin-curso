@@ -1,9 +1,9 @@
 Endpoints:
 
-GET: http://localhost:8080/api/libros/reportes/libros
-GET: http://localhost:8080/api/libros/reportes/usuarios
-GET: http://localhost:8080/api/libros/reportes/prestados
-GET: http://localhost:8080/api/libros/reportes/multas
+GET: http://localhost:8083/api/libros/reportes/libros
+GET: http://localhost:8083/api/libros/reportes/usuarios
+GET: http://localhost:8083/api/libros/reportes/prestados
+GET: http://localhost:8083/api/libros/reportes/multas
 
 Docker:
 

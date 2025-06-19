@@ -5,6 +5,9 @@ public class Usuario {
     private String nombre;
     private Rol rol;
 
+    public Usuario() {
+    }
+
     public Usuario(Long id, String nombre, Rol rol) {
         this.id = id;
         this.nombre = nombre;

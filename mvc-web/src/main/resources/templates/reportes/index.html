@@ -17,27 +17,32 @@
     </a>
 </div>
 
-
 <div class="container mt-5">
-    <h2 class="mb-4">Exportación de Reportes</h2>
+    <div class="text-center">
+        <h2 class="mb-4">📁 Exportación de Reportes</h2>
 
-    <div class="mb-3">
-        <a class="btn btn-primary" href="/reportes/cursos/csv">📘 Descargar Reporte de Cursos</a>
-    </div>
-    <div class="mb-3">
-        <a class="btn btn-primary" href="/reportes/estudiantes/csv">👨‍🎓 Descargar Reporte de Estudiantes</a>
-    </div>
-
-    <form th:action="@{/reportes/cursos/notas}" method="get" class="row g-3">
-        <div class="col-auto">
-            <input type="number" name="cursoId" class="form-control" placeholder="ID del Curso" required>
+        <div class="mb-3">
+            <a class="btn btn-primary px-4 py-2" href="/reportes/cursos/csv">📘 Descargar Reporte de Cursos</a>
         </div>
-        <div class="col-auto">
-            <button type="submit" class="btn btn-primary">📄 Descargar Notas por Curso</button>
-        </div>
-    </form>
-    <br>
 
+        <div class="mb-3">
+            <a class="btn btn-primary px-4 py-2" href="/reportes/estudiantes/csv">👨‍🎓 Descargar Reporte de Estudiantes</a>
+        </div>
+
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-6">
+                <form th:action="@{/reportes/cursos/notas}" method="get" class="row g-3">
+                    <div class="col-9">
+                        <input type="number" name="cursoId" class="form-control" placeholder="ID del Curso" required>
+                    </div>
+                    <div class="col-3">
+                        <button type="submit" class="btn btn-primary w-100">📄 Descargar Notas</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
+
 </body>
 </html>

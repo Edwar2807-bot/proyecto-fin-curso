@@ -1,0 +1,6 @@
+[
+  { "id": 101, "titulo": "100 años de soledad", "autor": "Gabriel Garcia Marquez" },
+  { "id": 102, "titulo": "Don Quijote de la Mancha", "autor": "Miguel de Cervantes Saavedra" },
+  { "id": 103, "titulo": "Clean Code", "autor": "Robert C. Martin" },
+  { "id": 104, "titulo": "El principito", "autor": "Antoine de Saint-Exupéry" }
+]
