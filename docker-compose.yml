@@ -8,6 +8,7 @@ services:
     ports:
       - "8088:8080"
     depends_on:
+      - servicio-calculo
       - servicio-libros
       - servicio-calificaciones
     networks:
@@ -20,6 +21,20 @@ services:
       - "8083:8080"
     networks:
       - red-interna
+
+  servicio-calculo:
+    build: ./servicio-calculo
+    container_name: servicio-calculo
+    ports:
+      - "8082:8080"
+    networks:
+      - red-interna
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
 
   servicio-calificaciones:
     build: ./servicio-calificaciones
